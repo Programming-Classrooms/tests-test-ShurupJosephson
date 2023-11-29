@@ -23,7 +23,7 @@ jobs:
         
     outputs:
       repo-is-template: ${{ steps.checking-template-repository.outputs.REPO_IS_TEMPLATE }}
-      commit-is-init: ${{ steps.checking-initialization.outputs.COMMIT_IS_INIT }}
+      commit-is-init: ${{ steps.checking-template-repository.outputs.COMMIT_IS_INIT }}
 
 
 
