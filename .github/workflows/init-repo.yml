@@ -18,19 +18,6 @@ jobs:
           repository=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}")
           is_template=$(echo "$repository" | jq -r ".is_template")
           echo "REPO_IS_TEMPLATE=$is_template" >> $GITHUB_OUTPUT
-          
-      - name: Checking initialization
-        id: checking-initialization
-        run: |
-          RUN_NUMBER=${{ github.run_number }}
-          echo "RUN_NUMBER = ${RUN_NUMBER}"
-          if [ "${RUN_NUMBER}" != 1 ]; then
-            echo "Not initial commit (remove this step to action trigger on all commits)"
-            echo "COMMIT_IS_INIT=false" >> $GITHUB_OUTPUT
-          else
-            echo "This commit is initial"
-            echo "COMMIT_IS_INIT=true" >> $GITHUB_OUTPUT
-          fi
         
     outputs:
       repo-is-template: ${{ steps.checking-template-repository.outputs.REPO_IS_TEMPLATE }}
