@@ -19,7 +19,7 @@ jobs:
           is_template=$(echo "$repository" | jq -r ".is_template")
           echo "REPO_IS_TEMPLATE=$is_template" >> $GITHUB_OUTPUT
 
-          echo "COMMIT_IS_INIT=false" >> $GITHUB_OUTPUT
+          echo "COMMIT_IS_INIT=true" >> $GITHUB_OUTPUT
         
     outputs:
       repo-is-template: ${{ steps.checking-template-repository.outputs.REPO_IS_TEMPLATE }}
